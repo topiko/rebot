@@ -10,10 +10,13 @@ char readString[4*2];
 
 Servo accServo;
 
+int rawX = 0;
+int rawY = 0;
+int rawZ = 0;
 
 // defines variables
-long duration;
-int distance;
+//long duration;
+//int distance;
 //const char term = '\n';
 //int scale = 3;
 
@@ -34,13 +37,14 @@ void setup()
 
 void loop()
 {
-  while(!Serial.available()) {}
+  while(!Serial.available()) {  
+    rawX = analogRead(A0);
+    rawY = analogRead(A1);
+    rawZ = analogRead(A2); 
+    delay(50); 
+  }
   // serial read section
 
-  // Clears the trigPin
-  int rawX = analogRead(A0);
-  int rawY = analogRead(A1);
-  int rawZ = analogRead(A2);
 
   while (Serial.available())
   {
