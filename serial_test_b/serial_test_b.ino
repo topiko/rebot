@@ -36,6 +36,12 @@ void loop()
 {
   while(!Serial.available()) {}
   // serial read section
+
+  // Clears the trigPin
+  int rawX = analogRead(A0);
+  int rawY = analogRead(A1);
+  int rawZ = analogRead(A2);
+
   while (Serial.available())
   {
     if (Serial.available() > 0)
@@ -59,10 +65,6 @@ void loop()
         count++;
     }
     
-    // Clears the trigPin
-    int rawX = analogRead(A0);
-    int rawY = analogRead(A1);
-    int rawZ = analogRead(A2);
   
     //pos = atoi(readString);
     //accServo.write(pos);
